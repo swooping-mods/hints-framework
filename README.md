@@ -1,5 +1,7 @@
 # Hints Framework
 
+<img src="media/icon.png" alt="Hints Framework icon" width="128" height="128">
+
 Shared native bottom control hints for equipped modded items.
 
 ## Install
