@@ -1,0 +1,31 @@
+{
+  "id": "hints-framework",
+  "kind": "native",
+  "version": "0.2.0",
+  "feature_dependencies": [],
+  "gameplay": true,
+  "display_name": "Hints Framework",
+  "play_help": [
+    "Shared native bottom item-control hints. Adds no permanent HUD panels or controls on its own."
+  ],
+  "standalone_dependencies": [
+    "sound-framework"
+  ],
+  "provides": {
+    "hints-framework.hints": {
+      "abi": 1,
+      "size": 24,
+      "limits": {
+        "max_providers": 32,
+        "max_controls": 8
+      }
+    },
+    "hints-framework.presentation": {
+      "abi": 1,
+      "size": 24,
+      "limits": {
+        "max_subscriptions": 32
+      }
+    }
+  }
+}
