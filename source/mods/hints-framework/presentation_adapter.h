@@ -12,6 +12,10 @@ static int mh_prepare_unsubscribe(unsigned handle){
 }
 static int mh_before_legend(PTR belt,int force){
     if(!__atomic_load_n(&mh.started,__ATOMIC_ACQUIRE)||!mh.thread||mh.thread!=GetCurrentThreadId())return 0;
+    unsigned frame=0;
+    /* A callback may mutate consumer state before Publish refuses it. Admit
+     * only when the provider can establish current-frame presentation too. */
+    if(!mh_frame(&frame))return mh_controls(belt,force);
     PTR walker=0,world=0;
     field_value(belt,mh.belt_walker,&walker);
     if(mh_allowed(walker,&world))mhp_dispatch(&mh.presentation,walker);

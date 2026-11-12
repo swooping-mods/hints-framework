@@ -2,6 +2,7 @@
 #include "../../runtime/native/gameplay.h"
 #include "../../runtime/native/services.h"
 #include "registry.h"
+#include "admission.h"
 #include "presentation_registry.h"
 #include "../sound-framework/sdk/client.h"
 int _fltused=0;
@@ -61,10 +62,17 @@ static void mh_release_entry(int index){
     mh_forget(mh.registry.entries+index);mh_drop(mh.walkers+index);mh_drop(mh.worlds+index);
 }
 static int mh_allowed(PTR walker,PTR *world){
-    int ok=1;*world=0;if(!mh_alive(walker))return 0;field_value(walker,mh.world_field,world);
-    if(!mh_alive(*world))return 0;
-    int focus=boolean(mh.focus,0,&ok),first=boolean(mh.firstperson,walker,&ok),blocked=boolean(mh.blocked,walker,&ok),typing=boolean(mh.typing,0,&ok),restoring=boolean(mh.restoring,*world,&ok);
-    return ok&&focus&&first&&!blocked&&!typing&&!restoring;
+    MHAdmissionSnapshot state={0};int ok=1;*world=0;
+    state.live_walker=mh_alive(walker);if(!state.live_walker)return 0;
+    field_value(walker,mh.world_field,world);
+    state.live_world=mh_alive(*world);if(!state.live_world)return 0;
+    state.focused=boolean(mh.focus,0,&ok);
+    state.first_person=boolean(mh.firstperson,walker,&ok);
+    state.menu_blocked=boolean(mh.blocked,walker,&ok);
+    state.typing=boolean(mh.typing,0,&ok);
+    state.restoring=boolean(mh.restoring,*world,&ok);
+    state.queries_succeeded=ok;
+    return mh_admission(&state)==MH_ADMIT_ALLOWED;
 }
 static int mh_publish(const char *key,void *walker,const char *controls){
     unsigned int frame=0;PTR world=0;MHControl parsed[MH_CONTROL_LIMIT];
