@@ -6,7 +6,7 @@ Shared native bottom control hints for equipped modded items.
 
 Install [Moon Sweepers Mod Loader](https://github.com/swooping-mods/moon-sweepers-mod-loader) first.
 
-Download [hints-framework-0.2.0.msmod](content/hints-framework-0.2.0.msmod), import it with **Install mod package**, then select the mod and its required frameworks.
+Download [hints-framework-0.2.1.msmod](content/hints-framework-0.2.1.msmod), import it with **Install mod package**, then select the mod and its required frameworks.
 
 ## Controls
 
@@ -14,7 +14,7 @@ Download [hints-framework-0.2.0.msmod](content/hints-framework-0.2.0.msmod), imp
 
 ## Compatibility
 
-Version 0.2.0. Targets the pinned Steam Windows x64 IL2CPP build of Moon Sweepers (Steam app 5335510). On Linux, the game runs through Proton. Experimental: back up saves before using save-affecting mods.
+Version 0.2.1. Targets the pinned Steam Windows x64 IL2CPP build of Moon Sweepers (Steam app 5335510). On Linux, the game runs through Proton. Experimental: back up saves before using save-affecting mods.
 
 ## Build
 

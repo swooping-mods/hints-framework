@@ -1,15 +1,6 @@
 # Hints Framework: behavior and implementation
 
-Describes the retained payload **0.2.0**. The behavior prose describes the retained payload; current candidate source and metadata are identified below. Gameplay qualification is a separate requirement.
-
-
-<!-- source-only-sync -->
-## Current source candidate
-
-Source version **0.2.0** is saved from workshop revision `ca32bbf79ce0840d5166a232bdb3a9fdcd761254`. The retained installable payload remains **0.2.0** with its original bytes. This source update does not rebuild or requalify that payload. The current source and metadata define the candidate; gameplay, rendered behavior and co-op remain unqualified for rebuilt bytes.
-
-The authored behavior and lifecycle descriptions below are retained from the published payload. They are not new qualification evidence for the source candidate. The integration table below follows the current candidate metadata.
-<!-- /source-only-sync -->
+Describes the exported implementation **0.2.1**. The source hashes and packaged module identify this version; verification remains scoped to the checks below.
 
 ## Behavior
 
@@ -38,6 +29,8 @@ The [module metadata](../source/mods/hints-framework/mod.json) owns the version 
 - [presentation_adapter.h](../source/mods/hints-framework/presentation_adapter.h)
 
 ## Verification boundary
+
+Refresh native hint admission and the shared adapter closure used by Squishy Plushie 0.2.1. Preserve the hints API and verify the native pickup hint in the loaded-world replay. Native Windows gameplay, other mod combinations, long sessions and real co-op remain separate.
 
 The framework does not create a permanent HUD or authorize arbitrary Unity calls from managed Update. Controller layout, loaded-game callback ordering and each consumer require matching runtime qualification.
 

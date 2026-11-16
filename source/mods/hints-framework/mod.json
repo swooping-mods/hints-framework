@@ -1,7 +1,7 @@
 {
   "id": "hints-framework",
   "kind": "native",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "feature_dependencies": [],
   "gameplay": true,
   "display_name": "Hints Framework",
